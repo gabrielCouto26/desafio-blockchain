@@ -1,17 +1,17 @@
 const SHA256 = require('crypto-js/sha256')
 
 class Block {
-    constructor(index, timestamp, data, previousHash = ''){
-        this.index = index
+    constructor(timestamp, data){
+        this.index = null
         this.timestamp = timestamp
         this.data = data
-        this.previousHash = previousHash
+        this.previousHash = ''
         this.hash = this._calculateHash()
         this.nonce = 0
     }
 
     _calculateHash(){
-        return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data) + this.nonce).toString()
+        return SHA256(this.previousHash  + this.nonce + JSON.stringify(this.data) + this.timestamp).toString()
     }
 
     mineBlock(difficulty){
@@ -19,18 +19,13 @@ class Block {
             this.nonce += 1
             this.hash = this._calculateHash()
         }
-        console.log("Block mined: " + this.hash)
     }
 }
 
 class Blockchain{
     constructor(){
-        this.chain = [this._createFirstBlock()]
+        this.chain = []
         this.difficulty = 2
-    }
-
-    _createFirstBlock(){
-        return new Block(0, '12/06/2021', 'Primeiro Bloco', '0')
     }
 
     _isChainValid(){
@@ -53,7 +48,14 @@ class Blockchain{
     }
 
     addBlock(newBlock){
-        newBlock.previousHash = this.getLatestBlock().hash
+        if(!this.chain.length){
+            newBlock.index = 1
+            newBlock.previousHash = 0
+        } else {
+            newBlock.index = this.chain.length + 1
+            newBlock.previousHash = this.getLatestBlock().hash
+        }
+        
         newBlock.mineBlock(this.difficulty)
         this.chain.push(newBlock)
     }
@@ -61,9 +63,8 @@ class Blockchain{
 }
 
 let coutoCoin = new Blockchain()
+coutoCoin.addBlock(new Block("13/06/2021", 'Primeiro Bloco'))
+coutoCoin.addBlock(new Block("14/06/2021", 'Segundo Bloco'))
+coutoCoin.addBlock(new Block("15/06/2021", 'Terceiro Bloco'))
 
-console.log('Bloco 1')
-coutoCoin.addBlock(new Block(1, "13/06/2021", 'Segundo Bloco'))
-
-console.log('Bloco 2')
-coutoCoin.addBlock(new Block(2, "14/06/2021", 'Terceiro Bloco'))
+console.log(JSON.stringify(coutoCoin, null, 2))
