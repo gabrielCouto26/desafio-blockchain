@@ -7,16 +7,26 @@ class Block {
         this.data = data
         this.previousHash = previousHash
         this.hash = this._calculateHash()
+        this.nonce = 0
     }
 
     _calculateHash(){
-        return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString()
+        return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data) + this.nonce).toString()
+    }
+
+    mineBlock(difficulty){
+        while(this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")){
+            this.nonce += 1
+            this.hash = this._calculateHash()
+        }
+        console.log("Block mined: " + this.hash)
     }
 }
 
 class Blockchain{
     constructor(){
         this.chain = [this._createFirstBlock()]
+        this.difficulty = 2
     }
 
     _createFirstBlock(){
@@ -44,16 +54,16 @@ class Blockchain{
 
     addBlock(newBlock){
         newBlock.previousHash = this.getLatestBlock().hash
-        newBlock.hash = newBlock._calculateHash()
+        newBlock.mineBlock(this.difficulty)
         this.chain.push(newBlock)
     }
 
 }
 
 let coutoCoin = new Blockchain()
+
+console.log('Bloco 1')
 coutoCoin.addBlock(new Block(1, "13/06/2021", 'Segundo Bloco'))
+
+console.log('Bloco 2')
 coutoCoin.addBlock(new Block(2, "14/06/2021", 'Terceiro Bloco'))
-
-console.log('Is blockchain valid? ' + coutoCoin._isChainValid())
-
-// console.log(JSON.stringify(coutoCoin, null, 4))
