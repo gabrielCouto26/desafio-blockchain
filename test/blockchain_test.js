@@ -15,13 +15,18 @@ describe('Blockchain', function(){
         blockchain.addBlock(block2)
     })
 
-    context('properties', function(){
+    context.only('properties', function(){
 
-        it('expect block to have chain', function(){
+        it('expect blockchain to have chain', function(){
             expect(blockchain).to.haveOwnProperty('chain')
         })
 
-        it('expect block to have difficulty', function(){
+        it('expect blockchain to initialize empty chain', function(){
+            let newBlockchain = new Blockchain()
+            expect(newBlockchain.chain.length).to.be.eq(0)
+        })
+
+        it('expect blockchain to have difficulty', function(){
             expect(blockchain).to.haveOwnProperty('difficulty')
         })
 
