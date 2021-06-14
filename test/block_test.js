@@ -2,9 +2,9 @@ const Block = require('../src/Block')
 const SHA256 = require('crypto-js/sha256')
 const { expect } = require('chai')
 
-let block;
-
 describe('Block', function(){
+    let block;
+
     before(function(){
         block = new Block("13/06/2021", 'Primeiro Bloco')
     })
