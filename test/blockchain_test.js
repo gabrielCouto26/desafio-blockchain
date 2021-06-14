@@ -2,7 +2,7 @@ const Blockchain = require('../src/Blockchain')
 const Block = require('../src/Block')
 const { expect } = require('chai')
 
-describe.only('Blockchain', function(){
+describe('Blockchain', function(){
     let blockchain = new Blockchain()
     let block;
     let block2;
