@@ -9,6 +9,34 @@ describe('Block', function(){
         block = new Block("13/06/2021", 'Primeiro Bloco')
     })
 
+    context('properties', function(){
+
+        it('expect block to have index', function(){
+            expect(block).to.haveOwnProperty('index')
+        })
+
+        it('expect block to have timestamp', function(){
+            expect(block).to.haveOwnProperty('timestamp')
+        })
+
+        it('expect block to have data', function(){
+            expect(block).to.haveOwnProperty('data')
+        })
+
+        it('expect block to have previousHash', function(){
+            expect(block).to.haveOwnProperty('previousHash')
+        })
+
+        it('expect block to have hash', function(){
+            expect(block).to.haveOwnProperty('hash')
+        })
+
+        it('expect block to have nonce', function(){
+            expect(block).to.haveOwnProperty('nonce')
+        })
+    })
+
+
     context('calculateHash', function(){
         
         it('expect criptography to work', function(){
