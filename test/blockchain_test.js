@@ -2,29 +2,30 @@ const Blockchain = require('../src/Blockchain')
 const Block = require('../src/Block')
 const { expect } = require('chai')
 
-describe('Blockchain', function(){
+describe.only('Blockchain', function(){
+    let blockchain = new Blockchain()
+    let block;
+    let block2;
 
+    before(function(){
+        block = new Block("13/06/2021", 'Primeiro Bloco')
+        block2 = new Block("14/06/2021", 'Segundo Bloco')
+
+        blockchain.addBlock(block)
+        blockchain.addBlock(block2)
+    })
 
     context('addBlock', function(){
 
         it('expect to add first block', function(){
-            let blockchain = new Blockchain()
-            let block = new Block("13/06/2021", 'Primeiro Bloco')
+            let newBlockchain = new Blockchain()
             
-            blockchain.addBlock(block)
+            newBlockchain.addBlock(block)
 
-            expect(blockchain.chain).to.have.members([block])
-
+            expect(newBlockchain.chain).to.have.members([block])
         })
 
         it('expect to add more blocks', function(){
-            let blockchain = new Blockchain()
-            let block = new Block("13/06/2021", 'Primeiro Bloco')
-            let block2 = new Block("14/06/2021", 'Segundo Bloco')
-            
-            blockchain.addBlock(block)
-            blockchain.addBlock(block2)
-
             expect(blockchain.chain).to.have.members([block, block2])
         })
     })
@@ -32,26 +33,12 @@ describe('Blockchain', function(){
     context('getLatestBlock', function(){
 
         it('expect to get latest block', function(){
-            let blockchain = new Blockchain()
-            let block = new Block("13/06/2021", 'Primeiro Bloco')
-            let block2 = new Block("14/06/2021", 'Segundo Bloco')
-            
-            blockchain.addBlock(block)
-            blockchain.addBlock(block2)
-
             let latestBlock = blockchain.getLatestBlock()
 
             expect(latestBlock).to.be.eq(block2)
         })
 
         it('expect not to get latest block', function(){
-            let blockchain = new Blockchain()
-            let block = new Block("13/06/2021", 'Primeiro Bloco')
-            let block2 = new Block("14/06/2021", 'Segundo Bloco')
-            
-            blockchain.addBlock(block)
-            blockchain.addBlock(block2)
-
             let latestBlock = blockchain.getLatestBlock()
 
             expect(latestBlock).not.to.be.eq(block)
@@ -59,17 +46,9 @@ describe('Blockchain', function(){
 
     })
 
-
     context('isChainValid', function(){
 
         it('expect chain to be valid', function(){
-            let blockchain = new Blockchain()
-            let block = new Block("13/06/2021", 'Primeiro Bloco')
-            let block2 = new Block("14/06/2021", 'Segundo Bloco')
-            
-            blockchain.addBlock(block)
-            blockchain.addBlock(block2)
-
             let chainValida = true
 
             for(let i = 1; i < blockchain.chain.length; i++){
@@ -83,18 +62,10 @@ describe('Blockchain', function(){
                     chainValida = false // bloco nao aponta para bloco anterior
             }
 
-            
             expect(blockchain._isChainValid()).to.be.eq(chainValida)
         })
 
         it('expect chain not to be valid', function(){
-            let blockchain = new Blockchain()
-            let block = new Block("13/06/2021", 'Primeiro Bloco')
-            let block2 = new Block("14/06/2021", 'Segundo Bloco')
-
-            blockchain.addBlock(block)
-            blockchain.addBlock(block2)
-
             block2.previousHash = ''
 
             expect(blockchain._isChainValid()).not.to.be.eq(true)
