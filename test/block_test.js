@@ -50,24 +50,24 @@ describe('Block', function(){
 
         })
 
-    })
-
-    it('expect mining not to work', function(){
-        let wrongDifficulty = 3
-        let difficulty = 2
-        let nonce = 0
-        let previousHash = 0
-        let hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + "13/06/2021").toString()
-
-        while(hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")){
-            nonce += 1
-            hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + "13/06/2021").toString()
-        }
-
-        let block = new Block("13/06/2021", 'Primeiro Bloco')
-        block.mineBlock(wrongDifficulty)
-
-        expect(hash).not.to.be.eq(block.hash)
+        it('expect mining not to work', function(){
+            let wrongDifficulty = 3
+            let difficulty = 2
+            let nonce = 0
+            let previousHash = 0
+            let hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + "13/06/2021").toString()
+    
+            while(hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")){
+                nonce += 1
+                hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + "13/06/2021").toString()
+            }
+    
+            let block = new Block("13/06/2021", 'Primeiro Bloco')
+            block.mineBlock(wrongDifficulty)
+    
+            expect(hash).not.to.be.eq(block.hash)
+    
+        })
 
     })
 
