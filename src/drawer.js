@@ -1,5 +1,5 @@
 const Drawer = {
-    // * desenhar blocos
+
     drawBlock(index, data){
         let block = document.createElement("div")
         block.classList.add("card")
@@ -22,8 +22,6 @@ const Drawer = {
         document.querySelector('.blockchain').appendChild(block)
     },
 
-    //* desenhar blockchain
-    // conjunto de blocos ligados
     drawBlockchain(blockchain){
         for(let block of blockchain.chain){
             this.drawBlock(block.index, block.data)

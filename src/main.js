@@ -11,9 +11,6 @@ coutoCoin.addBlock(block1)
 coutoCoin.addBlock(block2)
 coutoCoin.addBlock(block3)
 
-console.log(JSON.stringify(coutoCoin, null, 2))
+// console.log(JSON.stringify(coutoCoin, null, 2))
 
-// desenhar
-
-// Drawer.drawBlock(block1.index, block1.data)
 Drawer.drawBlockchain(coutoCoin)
