@@ -15,4 +15,5 @@ console.log(JSON.stringify(coutoCoin, null, 2))
 
 // desenhar
 
-Drawer.drawBlock(block1.index, block1.data)
+// Drawer.drawBlock(block1.index, block1.data)
+Drawer.drawBlockchain(coutoCoin)

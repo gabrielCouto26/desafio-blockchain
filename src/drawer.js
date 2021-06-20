@@ -3,6 +3,7 @@ const Drawer = {
     drawBlock(index, data){
         let block = document.createElement("div")
         block.classList.add("card")
+        block.style.width = "18rem"
 
         let blockBody = document.createElement("div")
         blockBody.classList.add("card-body")
@@ -18,11 +19,16 @@ const Drawer = {
         blockBody.appendChild(blockTitle)
         blockBody.appendChild(blockText)
         block.appendChild(blockBody)
-        document.querySelector('.container').appendChild(block)
-}
+        document.querySelector('.blockchain').appendChild(block)
+    },
 
     //* desenhar blockchain
     // conjunto de blocos ligados
+    drawBlockchain(blockchain){
+        for(let block of blockchain.chain){
+            this.drawBlock(block.index, block.data)
+        }
+    }
 
 }
 // Drawer.drawBlock("1", "teste")
