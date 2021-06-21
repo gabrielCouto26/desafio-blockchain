@@ -21,4 +21,5 @@ document.getElementById('btnAddBlock').addEventListener('click', function(e){
     coutoCoin.addBlock(block)
 
     Drawer.drawBlockchain(coutoCoin)
+    document.getElementById('blockData').value = ""
 })
