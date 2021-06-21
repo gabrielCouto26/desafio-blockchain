@@ -1,6 +1,6 @@
 const Drawer = {
 
-    drawBlock(index, data){
+    drawBlock(newBlock){
         let block = document.createElement("div")
         block.classList.add("card")
         block.style.width = "18rem"
@@ -11,19 +11,24 @@ const Drawer = {
 
         let blockTitle = document.createElement('h5')
         blockTitle.classList.add('card-title')
-        blockTitle.textContent = index
+        blockTitle.textContent = newBlock.index
 
         let blockText = document.createElement('p')
         blockText.classList.add('card-text')
-        blockText.textContent = data.toString()
+        blockText.textContent = newBlock.data.toString()
 
-        if(parseInt(index, 10) > 1){
+        let blockDate = document.createElement('small')
+        blockDate.classList.add('card-text')
+        blockDate.textContent = newBlock.timestamp.toString()
+
+        if(parseInt(newBlock.index, 10) > 1){
             let arrow = this.drawArrow()
             document.querySelector('.blockchain').appendChild(arrow)
         }
 
         blockBody.appendChild(blockTitle)
         blockBody.appendChild(blockText)
+        blockBody.appendChild(blockDate)
         block.appendChild(blockBody)
         document.querySelector('.blockchain').appendChild(block)
     },
@@ -31,7 +36,7 @@ const Drawer = {
     drawBlockchain(blockchain){
         document.querySelector('.blockchain').innerHTML = ""
         for(let block of blockchain.chain){
-            this.drawBlock(block.index, block.data)
+            this.drawBlock(block)
         }
     },
 
