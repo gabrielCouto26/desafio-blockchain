@@ -17,9 +17,9 @@ const Drawer = {
         blockText.classList.add('card-text')
         blockText.textContent = newBlock.data.toString()
 
-        let blockDate = document.createElement('small')
-        blockDate.classList.add('card-text')
-        blockDate.textContent = newBlock.timestamp.toString()
+        let blockFooter = document.createElement('small')
+        blockFooter.classList.add('card-footer')
+        blockFooter.textContent = newBlock.timestamp.toString()
 
         if(parseInt(newBlock.index, 10) > 1){
             let arrow = this.drawArrow()
@@ -28,8 +28,8 @@ const Drawer = {
 
         blockBody.appendChild(blockTitle)
         blockBody.appendChild(blockText)
-        blockBody.appendChild(blockDate)
         block.appendChild(blockBody)
+        block.appendChild(blockFooter)
         document.querySelector('.blockchain').appendChild(block)
     },
 
