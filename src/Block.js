@@ -3,7 +3,7 @@ const SHA256 = require('crypto-js/sha256')
 class Block {
     constructor(data){
         this.index = null
-        this.timestamp = this._actualDate()
+        this.timestamp = this._actualDateAndTime()
         this.data = data
         this.previousHash = ''
         this.hash = this._calculateHash()
@@ -21,13 +21,15 @@ class Block {
         }
     }
 
-    _actualDate(){
+    _actualDateAndTime(){
         let newDate = new Date();
         let day = newDate.getDate()
         let month = newDate.getMonth() + 1
         let year = newDate.getFullYear()
-        let actualDateString = `${day}/${month}/${year}`
-        return actualDateString
+        let hour = newDate.getHours()
+        let min = newDate.getMinutes()
+
+        return `${day}/${month}/${year} - ${hour}:${min}`
     }
 }
 

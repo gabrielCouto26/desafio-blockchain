@@ -3,15 +3,16 @@ const Drawer = {
     drawBlock(newBlock){
         let block = document.createElement("div")
         block.classList.add("card")
+        block.classList.add("text-center")
         block.style.width = "18rem"
         block.style.margin = "2rem 0"
 
         let blockBody = document.createElement("div")
         blockBody.classList.add("card-body")
 
-        let blockTitle = document.createElement('h5')
-        blockTitle.classList.add('card-title')
-        blockTitle.textContent = newBlock.index
+        let blockHeader = document.createElement('div')
+        blockHeader.classList.add('card-header')
+        blockHeader.innerText = newBlock.index
 
         let blockText = document.createElement('p')
         blockText.classList.add('card-text')
@@ -26,8 +27,8 @@ const Drawer = {
             document.querySelector('.blockchain').appendChild(arrow)
         }
 
-        blockBody.appendChild(blockTitle)
         blockBody.appendChild(blockText)
+        block.appendChild(blockHeader)
         block.appendChild(blockBody)
         block.appendChild(blockFooter)
         document.querySelector('.blockchain').appendChild(block)
