@@ -15,7 +15,7 @@ describe('Blockchain', function(){
         blockchain.addBlock(block2)
     })
 
-    context.only('properties', function(){
+    context('properties', function(){
 
         it('expect blockchain to have chain', function(){
             expect(blockchain).to.haveOwnProperty('chain')
