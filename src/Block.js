@@ -8,7 +8,7 @@ class Block {
         this.previousHash = ''
         this.hash = this._calculateHash()
         this.nonce = 0
-        this.blockDifficulty = parseInt(blockDifficulty, 10)
+        this.blockDifficulty = blockDifficulty
     }
 
     _calculateHash(){
@@ -17,8 +17,6 @@ class Block {
 
     mineBlock(difficulty){
         difficulty = this.blockDifficulty ? this.blockDifficulty : difficulty
-        console.log({difficulty})
-        console.log(this.blockDifficulty)
         while(this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")){
             this.nonce += 1
             this.hash = this._calculateHash()
