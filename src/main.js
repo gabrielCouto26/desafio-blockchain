@@ -3,11 +3,11 @@ const Blockchain = require('./Blockchain')
 const Drawer = require('./drawer')
 
 let coutoCoin = new Blockchain()
-let block1 = new Block('Primeiro Bloco')
-let block2 = new Block('Segundo Bloco')
 
-coutoCoin.addBlock(block1)
-coutoCoin.addBlock(block2)
+// let block1 = new Block('Primeiro Bloco')
+// let block2 = new Block('Segundo Bloco')
+// coutoCoin.addBlock(block1)
+// coutoCoin.addBlock(block2)
 
 // console.log(JSON.stringify(coutoCoin, null, 2))
 
