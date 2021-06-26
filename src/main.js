@@ -15,11 +15,17 @@ Drawer.drawBlockchain(coutoCoin)
 
 document.getElementById('btnAddBlock').addEventListener('click', function(e){
     e.preventDefault()
+    let difficulty = document.getElementById('blockDifficulty').value
     let blockData = document.getElementById('blockData').value
-    let block = new Block(blockData)
+    let block = new Block(blockData, difficulty)
 
     coutoCoin.addBlock(block)
     Drawer.drawBlockchain(coutoCoin)
 
+    document.getElementById('blockData').value = ""
+})
+
+window.addEventListener('load', () => {
+    document.getElementById('blockDifficulty').value = ""
     document.getElementById('blockData').value = ""
 })
