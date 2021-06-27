@@ -4,9 +4,19 @@ const { expect } = require('chai')
 
 describe('Block', function(){
     let block;
-
+    let actualDate;
+    
     before(function(){
-        block = new Block("13/06/2021", 'Primeiro Bloco')
+        block = new Block('Primeiro Bloco')
+
+        let newDate = new Date();
+        let day = newDate.getDate()
+        let month = newDate.getMonth() + 1
+        let year = newDate.getFullYear()
+        let hour = newDate.getHours()
+        let min = newDate.getMinutes()
+
+        actualDate = `${day}/${month}/${year} - ${hour}:${min}`
     })
 
     context('properties', function(){
@@ -44,7 +54,7 @@ describe('Block', function(){
 
             let previousHash = ''
             let nonce = 0
-            let mockHash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + "13/06/2021").toString()
+            let mockHash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + actualDate).toString()
             
             expect(mockHash).to.be.eq(hash);
         })
@@ -54,7 +64,7 @@ describe('Block', function(){
 
             let previousHash = ''
             let nonce = 0
-            let mockHash = SHA256(previousHash + nonce + JSON.stringify('Segundo Bloco') + "13/06/2021").toString()
+            let mockHash = SHA256(previousHash + nonce + JSON.stringify('Segundo Bloco') + actualDate).toString()
             
             expect(mockHash).not.to.be.eq(hash);
         })
@@ -67,11 +77,11 @@ describe('Block', function(){
             let difficulty = 2
             let nonce = 0
             let previousHash = ''
-            let hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + "13/06/2021").toString()
+            let hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + actualDate).toString()
 
             while(hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")){
                 nonce += 1
-                hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + "13/06/2021").toString()
+                hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + actualDate).toString()
             }
 
             block.mineBlock(difficulty)
@@ -85,11 +95,11 @@ describe('Block', function(){
             let difficulty = 2
             let nonce = 0
             let previousHash = 0
-            let hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + "13/06/2021").toString()
+            let hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + actualDate).toString()
     
             while(hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")){
                 nonce += 1
-                hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + "13/06/2021").toString()
+                hash = SHA256(previousHash + nonce + JSON.stringify('Primeiro Bloco') + actualDate).toString()
             }
     
             block.mineBlock(wrongDifficulty)
