@@ -31,8 +31,8 @@ const Drawer = {
             document.querySelector('.blockchain').appendChild(arrow)
         }
 
-        blockBody.appendChild(blockText)
         blockBody.appendChild(blockDifficulty)
+        blockBody.appendChild(blockText)
         block.appendChild(blockHeader)
         block.appendChild(blockBody)
         block.appendChild(blockFooter)
