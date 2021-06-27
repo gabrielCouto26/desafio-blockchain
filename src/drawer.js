@@ -17,6 +17,10 @@ const Drawer = {
         blockText.classList.add('card-text')
         blockText.textContent = newBlock.data.toString()
 
+        let blockDifficulty = document.createElement('p')
+        blockDifficulty.classList.add('card-text')
+        blockDifficulty.textContent = "Difficulty: " + newBlock.difficulty.toString()
+
         let blockDate = document.createElement('small')
         blockDate.classList.add('card-text')
         blockDate.textContent = newBlock.timestamp.toString()
@@ -28,6 +32,7 @@ const Drawer = {
 
         blockBody.appendChild(blockTitle)
         blockBody.appendChild(blockText)
+        blockBody.appendChild(blockDifficulty)
         blockBody.appendChild(blockDate)
         block.appendChild(blockBody)
         document.querySelector('.blockchain').appendChild(block)
