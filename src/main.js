@@ -3,11 +3,13 @@ const Blockchain = require('./Blockchain')
 const Drawer = require('./drawer')
 
 let coutoCoin = new Blockchain()
-let block1 = new Block('Primeiro Bloco')
-let block2 = new Block('Segundo Bloco')
 
-coutoCoin.addBlock(block1)
-coutoCoin.addBlock(block2)
+coutoCoin.addBlock(new Block('Primeiro Bloco'))
+coutoCoin.addBlock(new Block('Segundo Bloco'))
+coutoCoin.addBlock(new Block('Terceiro Bloco'))
+coutoCoin.addBlock(new Block('Quarto Bloco'))
+coutoCoin.addBlock(new Block('Quinto Bloco'))
+coutoCoin.addBlock(new Block('Sexto Bloco'))
 
 // console.log(JSON.stringify(coutoCoin, null, 2))
 
@@ -23,5 +25,9 @@ document.getElementById('btnAddBlock').addEventListener('click', function(e){
     Drawer.drawBlockchain(coutoCoin)
 
     document.getElementById('blockData').value = ""
+})
+
+window.addEventListener('load', () => {
     document.getElementById('blockDifficulty').value = ""
+    document.getElementById('blockData').value = ""
 })

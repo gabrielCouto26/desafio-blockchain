@@ -17,7 +17,7 @@ const Drawer = {
         let blockText = document.createElement('p')
         blockText.classList.add('card-text')
         blockText.textContent = newBlock.data.toString()
-
+        
         let blockDifficulty = document.createElement('p')
         blockDifficulty.classList.add('card-text')
         blockDifficulty.textContent = "Difficulty: " + newBlock.difficulty.toString()
