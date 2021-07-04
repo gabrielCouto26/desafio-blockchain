@@ -1,26 +1,39 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 
-const Block = (block) => {
-    return (
-        <Card>
-            <div className="card-header">
-                {block.data.index}
-            </div>
-            <p className="card-text">
-                {block.data.difficulty}
-            </p>
-            <p className="card-text">
-                {block.data.data}
-            </p>
-            <p className="card-text">
-                {block.data.hash}
-            </p>
-            <small className="card-footer">
-                {block.data.timestamp}
-            </small>
-        </Card>
-    );
+class Block extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            index: props.block.index,
+            difficulty: props.block.difficulty,
+            data: props.block.block,
+            hash: props.block.hash,
+            timestamp: props.block.timestamp
+        }
+    }
+
+    render(){
+        return (
+            <Card>
+                <Card.Header>
+                    {this.state.index}
+                </Card.Header>
+                <Card.Text>
+                    Difficulty: {this.state.difficulty}
+                </Card.Text>
+                <Card.Text>
+                    {this.state.data}
+                </Card.Text>
+                <Card.Text>
+                    {this.state.hash}
+                </Card.Text>
+                <Card.Footer>
+                    {this.state.timestamp}
+                </Card.Footer>
+            </Card>
+        );
+    }
 };
 
 export default Block;
