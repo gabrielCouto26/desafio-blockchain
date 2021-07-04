@@ -17,6 +17,10 @@ const Drawer = {
         let blockText = document.createElement('p')
         blockText.classList.add('card-text')
         blockText.textContent = newBlock.data.toString()
+
+        let blockHash = document.createElement('p')
+        blockHash.classList.add('card-text')
+        blockHash.textContent = "Hash: " + newBlock.hash.toString()
         
         let blockDifficulty = document.createElement('p')
         blockDifficulty.classList.add('card-text')
@@ -33,6 +37,7 @@ const Drawer = {
 
         blockBody.appendChild(blockDifficulty)
         blockBody.appendChild(blockText)
+        blockBody.appendChild(blockHash)
         block.appendChild(blockHeader)
         block.appendChild(blockBody)
         block.appendChild(blockFooter)
