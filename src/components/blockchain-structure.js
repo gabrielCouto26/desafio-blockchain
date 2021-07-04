@@ -12,16 +12,20 @@ const BlockchainStructure = ({blockchain = []}) => {
                                     {index > 0 ? "Block " + index : "Generator block"}
                                 </h5>
                                 <p className="card-text">
-                                    {value.data}
+                                    <div className="card">
+                                        <div className="card-body mb-2">
+                                            <h6>Hash</h6> {value.hash /*.substring(0,20)*/}
+                                        </div>
+                                    </div>
                                 </p>
                                 <p className="card-text">
-                                    Difficulty: {value.difficulty}
+                                    <h6>Data</h6>{value.data}
                                 </p>
                                 <p className="card-text">
-                                    Hash: {value.hash.substring(0,20)}...
+                                    <h6>Difficulty</h6> {value.difficulty}
                                 </p>
                                 <p className="card-text">
-                                    Previous Hash: {value.previousHash !== '' ? value.previousHash.substring(0,20) + "..." : 'None'}
+                                    <h6>Previous Hash</h6> {value.previousHash !== '' ? value.previousHash : 'None'}
                                 </p>
                                 <small className="card-text">
                                     {value.timestamp}
