@@ -6,10 +6,6 @@ let coutoCoin = new Blockchain()
 
 coutoCoin.addBlock(new Block('Primeiro Bloco'))
 coutoCoin.addBlock(new Block('Segundo Bloco'))
-coutoCoin.addBlock(new Block('Terceiro Bloco'))
-coutoCoin.addBlock(new Block('Quarto Bloco'))
-coutoCoin.addBlock(new Block('Quinto Bloco'))
-coutoCoin.addBlock(new Block('Sexto Bloco'))
 
 // console.log(JSON.stringify(coutoCoin, null, 2))
 
