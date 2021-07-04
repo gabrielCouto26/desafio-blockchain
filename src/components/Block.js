@@ -1,25 +1,23 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 
-import Block from '../models/Block'
-
-const Block = () => {
+const Block = (block) => {
     return (
         <Card>
             <div className="card-header">
-                {/* block index */}
+                {block.data.index}
             </div>
             <p className="card-text">
-                {/* block difficulty */}
+                {block.data.difficulty}
             </p>
             <p className="card-text">
-                {/* block data */}
+                {block.data.data}
             </p>
             <p className="card-text">
-                {/* block hash */}
+                {block.data.hash}
             </p>
             <small className="card-footer">
-                {/* block timestamp */}
+                {block.data.timestamp}
             </small>
         </Card>
     );

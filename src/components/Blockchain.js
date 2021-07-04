@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Blockchain from '../models/Blockchain'
+import Block from './Block'
 
-const BlockchainComponent = () => {
+const BlockchainComponent = (blockchain) => {
     return (
         <>
-            {/* Blockchain.chain. */}
+            {blockchain.data.chain.map((block, index) => <Block data={block} key={index}></Block>)}
         </>
     );
 };
