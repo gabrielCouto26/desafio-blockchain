@@ -1,11 +1,33 @@
-const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const port = process.env.PORT || 3000;
 
 module.exports = {
 	mode: 'development',
-	entry: path.resolve(__dirname, 'src/main.js'),
+	entry: './src/app.js',
 	output: {
-		filename: 'main.js',
-		path: path.resolve(__dirname, 'dist')
-	}
+		filename: 'bundle.[fullhash].js',
+	},
+	devtool: 'inline-source-map',
+	module: {
+		rules: [
+			{
+				test: /\.(js)$/,
+				exclude: /node_modules/,
+				use: ['babel-loader']
+			},
+		]
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+		  template: './public/index.html'
+		})
+	],
+	devServer: {
+		host: 'localhost',
+		port: port,
+		historyApiFallback: true,
+		open: true
+	  }
 
 }

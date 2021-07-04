@@ -1,5 +1,5 @@
 # Desafio Blockchain do Programa de Formação da Investtools
 
-## npm install
+## yarn install
 
-## npx webpack
+## yarn start
