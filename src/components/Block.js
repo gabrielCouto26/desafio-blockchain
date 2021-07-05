@@ -9,7 +9,7 @@ class Block extends React.Component {
     }
 
     render(){
-        let {index, difficulty, data, hash, timestamp} = this.props
+        let {index, difficulty, data, hash, timestamp} = this.props.block
         return (
             <>
                 { index > 1 
@@ -25,7 +25,7 @@ class Block extends React.Component {
                             <strong>Difficulty:</strong> {difficulty}
                         </Card.Text>
                         <Card.Text>
-                            {data}
+                            <strong>Data:</strong> {data}
                         </Card.Text>
                         <Card.Text>
                             <strong>Hash:</strong> {hash}
