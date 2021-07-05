@@ -16,6 +16,22 @@ module.exports = {
 				exclude: /node_modules/,
 				use: ['babel-loader']
 			},
+			{
+				test: /\.css$/,
+				use: [
+				  {
+					loader: 'style-loader'
+				  },
+				  {
+					loader: 'css-loader',
+					options: {
+					  modules: true,
+					  localsConvention: 'camelCase',
+					  sourceMap: true
+					}
+				  }
+				]
+			}
 		]
 	},
 	plugins: [
@@ -27,7 +43,7 @@ module.exports = {
 		host: 'localhost',
 		port: port,
 		historyApiFallback: true,
-		open: true
+		open: false
 	  }
 
 }

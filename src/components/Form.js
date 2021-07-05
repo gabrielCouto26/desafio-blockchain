@@ -39,7 +39,7 @@ class FormComponenet extends React.Component {
         const blockDifficulty = this.state.blockDifficulty
 
         return (
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} className="position-fixed mt-4">
                 <Form.Group>
                     <Form.Label>Add new block</Form.Label>
                     <Form.Control value={blockData} onChange={this.handleDataChange} type="text" placeholder="Block data" id="blockData"/>

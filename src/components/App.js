@@ -2,7 +2,6 @@ import React from 'react';
 
 import BlockchainComponent from './Blockchain'
 import FormComponenet from './Form'
-
 import mock from '../mock'
 
 class App extends React.Component {
@@ -21,10 +20,13 @@ class App extends React.Component {
 
     render(){
         return (
-            <>
+            <div className="container">
+                <div className="text-center mt-4">
+                    <h1>Desafio Blockchain</h1>
+                </div>
                 <FormComponenet blockchain={this.state.blockchain} onBlockchainChange={this.onBlockchainChange} />
                 <BlockchainComponent blockchain={this.state.blockchain} onBlockchainChange={this.onBlockchainChange} />
-            </>
+            </div>
         );
     }
 };
