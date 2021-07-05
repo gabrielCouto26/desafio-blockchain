@@ -6,39 +6,33 @@ import Seta from './Seta'
 class Block extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            index: props.block.index,
-            difficulty: props.block.difficulty,
-            data: props.block.block,
-            hash: props.block.hash,
-            timestamp: props.block.timestamp
-        }
     }
 
     render(){
+        let {index, difficulty, data, hash, timestamp} = this.props
         return (
             <>
-                { this.state.index > 1 
+                { index > 1 
                     ? <Seta />
                     : ''
                 }
                 <Card className="text-center" style={{width: "20rem", margin: "2rem 0"}}>
                     <Card.Header>
-                        {this.state.index}
+                        {index}
                     </Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <strong>Difficulty:</strong> {this.state.difficulty}
+                            <strong>Difficulty:</strong> {difficulty}
                         </Card.Text>
                         <Card.Text>
-                            {this.state.data}
+                            {data}
                         </Card.Text>
                         <Card.Text>
-                            <strong>Hash:</strong> {this.state.hash}
+                            <strong>Hash:</strong> {hash}
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        {this.state.timestamp}
+                        {timestamp}
                     </Card.Footer>
                 </Card>
             </>
