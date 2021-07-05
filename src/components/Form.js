@@ -37,10 +37,26 @@ class Form extends React.Component {
             <RForm onSubmit={this.handleSubmit} className="position-fixed mt-4">
                 <Form.Group>
                     <Form.Label>Add new block</Form.Label>
-                    <Form.Control value={blockData} onChange={this.handleDataChange} type="text" placeholder="Block data" id="blockData"/>
-                    <Form.Control value={blockDifficulty} onChange={this.handleDifficultyChange} type="number" placeholder="Block difficulty" id="blockDifficulty" />
+                    <Form.Control
+                        value={blockData}
+                        onChange={this.handleDataChange}
+                        type="text"
+                        placeholder="Block data"
+                        id="blockData"
+                    />
+                    <Form.Control
+                        value={blockDifficulty}
+                        onChange={this.handleDifficultyChange}
+                        type="number"
+                        placeholder="Block difficulty"
+                        id="blockDifficulty" 
+                    />
                 </Form.Group>
-                <Button type="submit" variant="primary">Add</Button>
+                <Button 
+                    type="submit" 
+                    variant="primary">
+                    Add
+                </Button>
             </RForm>
         )
     }
