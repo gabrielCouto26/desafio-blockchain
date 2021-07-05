@@ -1,5 +1,5 @@
-const Blockchain = require('../src/Blockchain')
-const Block = require('../src/Block')
+const Blockchain = require('../src/models/Blockchain')
+const Block = require('../src/models/Block')
 const { expect } = require('chai')
 
 describe('Blockchain', function(){

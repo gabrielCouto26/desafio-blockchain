@@ -1,4 +1,4 @@
-const Block = require('../src/Block')
+const Block = require('../src/models/Block')
 const SHA256 = require('crypto-js/sha256')
 const { expect } = require('chai')
 
