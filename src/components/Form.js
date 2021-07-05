@@ -1,11 +1,9 @@
 import React from 'react'
 
-import Form from 'react-bootstrap/Form'
+import {Form as RForm} from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import Block from '../models/Block'
-
-class FormComponenet extends React.Component {
+class Form extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -28,10 +26,7 @@ class FormComponenet extends React.Component {
 
     handleSubmit = (e) =>{
         e.preventDefault()
-        
-        let block = new Block(this.state.blockData, this.state.blockDifficulty)
-        this.props.blockchain.addBlock(block)
-        this.props.onBlockchainChange(this.props.blockchain)
+        this.props.onBlockchainChange({blockData: this.state.blockData, blockDifficulty: this.state.blockDifficulty})
     }
 
     render(){
@@ -39,16 +34,16 @@ class FormComponenet extends React.Component {
         const blockDifficulty = this.state.blockDifficulty
 
         return (
-            <Form onSubmit={this.handleSubmit} className="position-fixed mt-4">
+            <RForm onSubmit={this.handleSubmit} className="position-fixed mt-4">
                 <Form.Group>
                     <Form.Label>Add new block</Form.Label>
                     <Form.Control value={blockData} onChange={this.handleDataChange} type="text" placeholder="Block data" id="blockData"/>
                     <Form.Control value={blockDifficulty} onChange={this.handleDifficultyChange} type="number" placeholder="Block difficulty" id="blockDifficulty" />
                 </Form.Group>
                 <Button type="submit" variant="primary">Add</Button>
-            </Form>
+            </RForm>
         )
     }
 }
 
-export default FormComponenet;
+export default Form;
