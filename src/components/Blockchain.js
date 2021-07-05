@@ -2,7 +2,7 @@ import React from 'react';
 
 import Block from './Block'
 
-class BlockchainComponent extends React.Component {
+class List extends React.Component {
     constructor(props){
         super(props);
     }
@@ -11,10 +11,14 @@ class BlockchainComponent extends React.Component {
         const chain = this.props.blockchain.chain
         return (
             <div className="d-flex flex-column align-items-center mt-4 mb-4">
-                {chain.map((block, index) => <Block block={block} key={index}></Block>)}
+                {
+                    chain.map((block, index) => 
+                        <Block block={block} key={index} />
+                    )
+                }
             </div>
         );
     }
 };
 
-export default BlockchainComponent;
+export default List;
