@@ -1,11 +1,12 @@
 import React from 'react';
 
-import List from './Blockchain'
+import List from './List'
 import Form from './Form'
 import mock from '../mock'
 
 import Block from '../models/Block'
 
+// implementar redux
 
 class App extends React.Component {
     constructor(props){
@@ -14,10 +15,10 @@ class App extends React.Component {
             blockchain: mock.blockchain
         }
 
-        this.onBlockchainChange = this.onBlockchainChange.bind(this)
+        this.addBlock = this.addBlock.bind(this)
     }
 
-    onBlockchainChange = ({blockData, blockDifficulty}) => {
+    addBlock = ({blockData, blockDifficulty}) => {
         let block = new Block(blockData, blockDifficulty)
         this.state.blockchain.addBlock(block)
 
@@ -30,7 +31,10 @@ class App extends React.Component {
                 <div className="text-center mt-4">
                     <h1>Desafio Blockchain</h1>
                 </div>
-                <Form blockchain={this.state.blockchain} onBlockchainChange={this.onBlockchainChange} />
+                <Form
+                    blockchain={this.state.blockchain}
+                    addBlock={this.addBlock} 
+                />
                 <List blockchain={this.state.blockchain} />
             </div>
         );

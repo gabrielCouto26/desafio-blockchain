@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import {Form as RForm} from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
@@ -13,7 +14,6 @@ class Form extends React.Component {
 
         this.handleDataChange = this.handleDataChange.bind(this)
         this.handleDifficultyChange = this.handleDifficultyChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleDataChange = (e) =>{
@@ -24,17 +24,12 @@ class Form extends React.Component {
         this.setState({blockDifficulty: e.target.value})
     }
 
-    handleSubmit = (e) =>{
-        e.preventDefault()
-        this.props.onBlockchainChange({blockData: this.state.blockData, blockDifficulty: this.state.blockDifficulty})
-    }
-
     render(){
         const blockData = this.state.blockData
         const blockDifficulty = this.state.blockDifficulty
 
         return (
-            <RForm onSubmit={this.handleSubmit} className="position-fixed mt-4">
+            <RForm className="position-fixed mt-4">
                 <RForm.Group>
                     <RForm.Label>Add new block</RForm.Label>
                     <RForm.Control
@@ -52,14 +47,23 @@ class Form extends React.Component {
                         id="blockDifficulty" 
                     />
                 </RForm.Group>
-                <Button 
-                    type="submit" 
-                    variant="primary">
+                <Button
+                    onClick={() => this.props.addBlock({blockData: blockData, blockDifficulty: blockDifficulty})}
+                    variant="primary"
+                >
                     Add
                 </Button>
             </RForm>
         )
     }
+};
+
+Form.propTypes = {
+    addBlock: PropTypes.func
+}
+
+Form.defaultProps = {
+    addBlock: () => undefined
 }
 
 export default Form;
