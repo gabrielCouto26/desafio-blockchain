@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Form as RForm} from 'react-bootstrap/Form'
+import {Form as RForm} from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 
 class Form extends React.Component {
@@ -35,23 +35,23 @@ class Form extends React.Component {
 
         return (
             <RForm onSubmit={this.handleSubmit} className="position-fixed mt-4">
-                <Form.Group>
-                    <Form.Label>Add new block</Form.Label>
-                    <Form.Control
+                <RForm.Group>
+                    <RForm.Label>Add new block</RForm.Label>
+                    <RForm.Control
                         value={blockData}
                         onChange={this.handleDataChange}
                         type="text"
                         placeholder="Block data"
                         id="blockData"
                     />
-                    <Form.Control
+                    <RForm.Control
                         value={blockDifficulty}
                         onChange={this.handleDifficultyChange}
                         type="number"
                         placeholder="Block difficulty"
                         id="blockDifficulty" 
                     />
-                </Form.Group>
+                </RForm.Group>
                 <Button 
                     type="submit" 
                     variant="primary">
