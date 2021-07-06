@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types"
 
 import Block from './Block'
 
@@ -20,5 +21,14 @@ class List extends React.Component {
         );
     }
 };
+
+List.propTypes = {
+    blockchain: PropTypes.object
+}
+
+List.defaultProps = {
+    blockchain: { }
+}
+
 
 export default List;

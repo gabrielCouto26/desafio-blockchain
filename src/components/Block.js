@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Card from 'react-bootstrap/Card';
 
 import Seta from './Seta'
@@ -39,5 +41,21 @@ class Block extends React.Component {
         );
     }
 };
+
+Block.propTypes = {
+    index: PropTypes.number,
+    difficulty: PropTypes.number,
+    data: PropTypes.string,
+    hash: PropTypes.string,
+    timestamp: PropTypes.string
+}
+
+Block.defaultProps = {
+    index: 0 ,
+    difficulty: 2,
+    data: 'default',
+    hash: 'default',
+    timestamp: 'agora'
+}
 
 export default Block;
