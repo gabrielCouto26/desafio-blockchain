@@ -4,58 +4,43 @@ import PropTypes from 'prop-types'
 import {Form as RForm} from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 
-class Form extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            blockData: 'teste',
-            blockDifficulty: 2
-        }
+const Form = ({addBlock}) => {
 
-        this.handleDataChange = this.handleDataChange.bind(this)
-        this.handleDifficultyChange = this.handleDifficultyChange.bind(this)
-    }
+    const [blockData, setBlockData] = React.useState('teste')
+    const [blockDifficulty, setBlockDifficulty] = React.useState(2)
 
-    handleDataChange = (e) =>{
-        this.setState({blockData: e.target.value})
-    }
-
-    handleDifficultyChange = (e) =>{
-        this.setState({blockDifficulty: e.target.value})
-    }
-
-    render(){
-        const blockData = this.state.blockData
-        const blockDifficulty = this.state.blockDifficulty
-
-        return (
-            <RForm className="position-fixed mt-4">
-                <RForm.Group>
-                    <RForm.Label>Add new block</RForm.Label>
-                    <RForm.Control
-                        value={blockData}
-                        onChange={this.handleDataChange}
-                        type="text"
-                        placeholder="Block data"
-                        id="blockData"
-                    />
-                    <RForm.Control
-                        value={blockDifficulty}
-                        onChange={this.handleDifficultyChange}
-                        type="number"
-                        placeholder="Block difficulty"
-                        id="blockDifficulty" 
-                    />
-                </RForm.Group>
-                <Button
-                    onClick={() => this.props.addBlock({blockData: blockData, blockDifficulty: blockDifficulty})}
-                    variant="primary"
-                >
-                    Add
-                </Button>
-            </RForm>
-        )
-    }
+    return (
+        <RForm className="position-fixed mt-4">
+            <RForm.Group>
+                <RForm.Label>Add new block</RForm.Label>
+                <RForm.Control
+                    value={blockData}
+                    onChange={(e) => setBlockData(e.target.value)}
+                    type="text"
+                    placeholder="Block data"
+                    id="blockData"
+                />
+                <RForm.Control
+                    value={blockDifficulty}
+                    onChange={(e) => setBlockDifficulty(e.target.value)}
+                    type="number"
+                    placeholder="Block difficulty"
+                    id="blockDifficulty" 
+                />
+            </RForm.Group>
+            <Button
+                onClick={
+                    () => addBlock({
+                            blockData: blockData, 
+                            blockDifficulty: blockDifficulty
+                        })
+                }
+                variant="primary"
+            >
+                Add
+            </Button>
+        </RForm>
+    )
 };
 
 Form.propTypes = {

@@ -5,41 +5,35 @@ import Card from 'react-bootstrap/Card';
 
 import Seta from './Seta'
 
-class Block extends React.Component {
-    constructor(props){
-        super(props);
-    }
-
-    render(){
-        let {index, difficulty, data, hash, timestamp} = this.props.block
-        return (
-            <>
-                { index > 1 
-                    ? <Seta />
-                    : ''
-                }
-                <Card className="text-center" style={{width: "20rem", margin: "2rem 0"}}>
-                    <Card.Header>
-                        {index}
-                    </Card.Header>
-                    <Card.Body>
-                        <Card.Text>
-                            <strong>Difficulty:</strong> {difficulty}
-                        </Card.Text>
-                        <Card.Text>
-                            <strong>Data:</strong> {data}
-                        </Card.Text>
-                        <Card.Text>
-                            <strong>Hash:</strong> {hash}
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        {timestamp}
-                    </Card.Footer>
-                </Card>
-            </>
-        );
-    }
+const Block = ({ block }) => {
+    const { index, difficulty, data, hash, timestamp} = block
+    return (
+        <>
+            { index > 1 
+                ? <Seta />
+                : ''
+            }
+            <Card className="text-center" style={{width: "20rem", margin: "2rem 0"}}>
+                <Card.Header>
+                    {index}
+                </Card.Header>
+                <Card.Body>
+                    <Card.Text>
+                        <strong>Difficulty:</strong> {difficulty}
+                    </Card.Text>
+                    <Card.Text>
+                        <strong>Data:</strong> {data}
+                    </Card.Text>
+                    <Card.Text>
+                        <strong>Hash:</strong> {hash}
+                    </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                    {timestamp}
+                </Card.Footer>
+            </Card>
+        </>
+    );
 };
 
 Block.propTypes = {
